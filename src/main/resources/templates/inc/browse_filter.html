@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<div id="nav">
+    <div class="col-md-3" id="browse_filters">
+        <div class="box box-solid" id="filter">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-filter"></i> Filter</h3>
+                <div class="box-tools">
+                    <button type="button" class="btn " id="reset"><i class="fa fa-trash-o"></i> Clear
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label>Taxonomy:</label>
+                    <select class="form-control select2" id="browse_tax_gen"  style="width: 100%;" onchange="basicsearch();">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Organism:</label>
+                    <select class="form-control select2" id="browse_org_gen"  style="width: 100%;" onchange="basicsearch();">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Assembly-Accession:</label>
+                    <select class="form-control select2" id="browse_ass_gen"  style="width: 100%;" onchange="basicsearch();">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Gene-Id:</label>
+                    <select class="form-control select2" id="browse_geni_gen"  style="width: 100%;" onchange="basicsearch();">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Gene-Name:</label>
+                    <select class="form-control select2" id="browse_genn_gen"  style="width: 100%;" onchange="basicsearch();">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Protein-Id:</label>
+                    <select class="form-control select2" id="browse_proi_gen"  style="width: 100%;" onchange="basicsearch();">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Protein-Name:</label>
+                    <select class="form-control select2" id="browse_prn_gen"  style="width: 100%;" onchange="basicsearch();">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Low-Quality:</label>
+                    <select class="form-control " id="browse_quality_gen"  style="width: 100%;" onchange="basicsearch();">
+                        <option value="-1"></option>
+                        <option value="No">No</option>
+                        <option value="Internal_stop_codon">Internal_stop_codon</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

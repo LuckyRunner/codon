@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Home - CompoDynamics: Database of Genomic Composition Dynamics - National Genomics Data Center</title>
+    <div th:replace="~{inc/header::header}"></div>
+</head>
+<body class="hold-transition skin-blue layout-top-nav">
+<div class="wrapper" style="overflow:hidden;height: auto;">
+    <div th:replace="inc/nav::#nav(activeUri='')"></div>
+    <div class="content-wrapper">
+        <div class="container-fluid" style="padding-left: 40px; padding-right: 40px">
+            <div class="row">
+                <section class="invoice" style="margin: 14px">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="page-header">
+                               Basic meta info
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 table-responsive">
+                            <table class="table table-bordered table-hover table-striped" id="species_table1"><tbody></tbody></table>
+                        </div>
+                        <div class="col-xs-4 table-responsive">
+                            <table class="table table-bordered table-hover table-striped" id="species_table2"><tbody></tbody></table>
+                        </div>
+                        <div class="col-xs-4 table-responsive">
+                            <table class="table table-bordered table-hover table-striped" id="species_table3"><tbody></tbody></table>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="invoice" style="margin: 14px">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="page-header">
+                               Nucleotide composition
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 table-responsive">
+                            <table id="nuccomG_table" class="table table-bordered table-hover table-striped">
+                                <thead>
+                                <tr>
+                                    <th>GC</th>
+                                    <th>AG</th>
+                                    <th>GC1</th>
+                                    <th>AG1</th>
+                                    <th>GC2</th>
+                                    <th>AG2</th>
+                                    <th>GC3</th>
+                                    <th>AG3</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-xs-12">
+                            <div id="nuc_box_bar"></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="invoice" style="margin: 14px">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="page-header">
+                             Synonymous nucleotide composition
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 table-responsive">
+                            <table id="synnuccomG_table" class="table table-bordered table-hover table-striped">
+                                <thead>
+                                <tr>
+                                    <th>T3s</th>
+                                    <th>C3s</th>
+                                    <th>A3s</th>
+                                    <th>G3s</th>
+                                    <th>GC3s</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-xs-12">
+                            <div id="syn_box_bar"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="invoice" style="margin: 14px">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="page-header">
+                                Codon usage
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div id="codon_genome_bar"></div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div id="codon_box_bar"></div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div id="exp_heat_bar"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="invoice" style="margin: 14px">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="page-header">
+                                Codon usage bias
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 table-responsive">
+                            <table class="table table-bordered table-hover table-striped" id="usagebiasG_table"><tbody></tbody></table>
+                        </div>
+                        <div class="col-xs-6 table-responsive">
+                            <table class="table table-bordered table-hover table-striped" id="usagebiasG_table1"><tbody></tbody></table>
+                        </div>
+                        <div class="col-xs-12">
+                            <div id="codon_bias_genome_bar"></div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div id="bias_box_bar"></div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div id="usage_bias_heat_bar"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="invoice" style="margin: 14px">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="page-header">
+                                Amino acids usage
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div id="amino_genome_bar"></div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div id="amino_box_bar"></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="invoice" style="margin: 14px">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="page-header">
+                                Coding potential
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 table-responsive">
+                            <table id="codingProG_table" class="table table-bordered table-hover table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Fickett-Score</th>
+                                    <th>CPC2-Coding-Probability</th>
+                                    <th>CPC2-Coding-Percentage</th>
+                                    <th>LGC-Coding-Potential-Score</th>
+                                    <th>LGC-Coding-Percentage</th>
+                                    <th>Coding-In-Both-Percentage</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-xs-12">
+                            <div id="coding_box_bar"></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="invoice" style="margin: 14px">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="page-header">
+                                Protein feature
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 table-responsive">
+                            <table id="proteinG_table" class="table table-bordered table-hover table-striped">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        <a href="#" target="_blank"
+                                           class="tooltip-test" data-toggle="tooltip"
+                                           title="Molecular weight">MW
+                                            <span class="fa fa-question-circle"></span>
+                                        </a>
+                                    </th>
+                                    <th>
+                                        <a href="#" target="_blank"
+                                           class="tooltip-test" data-toggle="tooltip"
+                                           title="Surface area">SA
+                                            <span class="fa fa-question-circle"></span>
+                                        </a>
+                                    </th>
+                                    <th>
+                                        <a href="#" target="_blank"
+                                           class="tooltip-test" data-toggle="tooltip"
+                                           title="Residue volume">RV
+                                            <span class="fa fa-question-circle"></span>
+                                        </a>
+                                    </th>
+                                    <th>kdHydrophobicity</th>
+                                    <th>wwHydrophobicity</th>
+                                    <th>hhHydrophobicity</th>
+                                    <th>Positive</th>
+                                    <th>Negative</th>
+                                    <th>Neutral</th>
+                                    <th>Alpha</th>
+                                    <th>Beta</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-xs-12">
+                            <div id="protein_box_bar"></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="invoice" style="margin: 14px">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="page-header">
+                                Phase Separation
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 table-responsive">
+                            <table id="phaseG_table" class="table table-bordered table-hover table-striped">
+                                <thead>
+                                <tr>
+                                    <th>LLR</th>
+                                    <th>Core-Score</th>
+                                    <th>PAPA-Prop</th>
+                                    <th>PAPA-FI</th>
+                                    <th>AA-Length</th>
+                                    <th>Disorder-Percent</th>
+                                    <th>Disorder-30AA-Num</th>
+                                    <th>Disorder-50AA-Num</th>
+                                    <th>Disorder-Segment-Num</th>
+                                    <th>PS-Core</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-xs-12">
+                            <div id="phase_box_bar"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{inc/footer::#footer}"></div>
+<script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/modules/heatmap.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/highcharts-more.js"></script>
+<script th:src="@{/js/myjs/genomepage/amino_genome.js}"></script>
+<script th:src="@{/js/myjs/genomepage/basic_meta_genome.js}"></script>
+<script th:src="@{/js/myjs/genomepage/codon_bias_genome.js}"></script>
+<script th:src="@{/js/myjs/genomepage/nuc_cop_genome.js}"></script>
+<script th:src="@{/js/myjs/genomepage/nuc_syn_genome.js}"></script>
+<script th:src="@{/js/myjs/genomepage/protein_genome.js}"></script>
+<script th:src="@{/js/myjs/genomepage/coding_genome.js}"></script>
+<script th:src="@{/js/myjs/genomepage/codon_genome.js}"></script>
+<script th:src="@{/js/myjs/genomepage/phase_genome.js}"></script>
+</body>
+</html>

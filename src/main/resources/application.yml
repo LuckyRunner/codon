@@ -1,0 +1,217 @@
+server:
+  port: 18001
+  servlet:
+    context-path: /compodynamics
+
+spring:
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    cache: false
+    servlet:
+      content-type: text/html
+
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: compodynamics
+  shardingsphere:
+    props:
+      sql:
+        show: true
+    datasource:
+      names: ds0
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://192.168.116.53:33060/compodynamics?serverTimezone=UTC&characterEncoding=utf-8&useSSL=false
+        username: root
+        password: '123456'
+        hikari:
+          minimum-idle: 5
+          idle-timeout: 600000
+          maximum-pool-size: 10
+          auto-commit: true
+          pool-name: MyHikariCP
+          max-lifetime: 1800000
+          connection-timeout: 30000
+          connection-test-query: SELECT 1
+    sharding:
+      binding-tables: amino_acids_usage,coding_potential,codon_rscu,codon_usage,gene_basic_info,nucleotide_cop,nucleotide_syno,protein_feature,phase_seperation,phase_seperation_pic,phase_seperation_g,protein_feature_pic,amino_acids_usage_g,coding_potential_g,codon_rscu_g,codon_usage_g,nucleotide_cop_g,nucleotide_cop_syno_g,protein_feature_g,specise_info,amino_pic,coding_pic,codon_bias_pic,codon_pic,nucleotide_pic,nucleotide_syno_pic,protein_pic,statistics_gccdcenc,statistics_hotmap
+      default-database-strategy:
+        inline:
+          algorithm-expression: ds0
+          sharding-column: id
+      tables:
+        amino_acids_usage:
+          actual-data-nodes: ds0.amino_acids_usage_$->{0..39}
+          table-strategy:
+            inline:
+              algorithm-expression: amino_acids_usage_$->{id % 40}
+              sharding-column: id
+        coding_potential:
+          actual-data-nodes: ds0.coding_potential_$->{0..39}
+          table-strategy:
+            inline:
+              algorithm-expression: coding_potential_$->{id % 40}
+              sharding-column: id
+        codon_rscu:
+          actual-data-nodes: ds0.codon_rscu_$->{0..39}
+          table-strategy:
+            inline:
+              algorithm-expression: codon_rscu_$->{id % 40}
+              sharding-column: id
+        codon_usage:
+          actual-data-nodes: ds0.codon_usage_$->{0..39}
+          table-strategy:
+            inline:
+              algorithm-expression: codon_usage_$->{id % 40}
+              sharding-column: id
+        gene_basic_info:
+          actual-data-nodes: ds0.gene_basic_info_$->{0..39}
+          table-strategy:
+            inline:
+              algorithm-expression: gene_basic_info_$->{id % 40}
+              sharding-column: id
+        nucleotide_cop:
+          actual-data-nodes: ds0.nucleotide_cop_$->{0..39}
+          table-strategy:
+            inline:
+              algorithm-expression: nucleotide_cop_$->{id % 40}
+              sharding-column: id
+        nucleotide_syno:
+          actual-data-nodes: ds0.nucleotide_syno_$->{0..39}
+          table-strategy:
+            inline:
+              algorithm-expression: nucleotide_syno_$->{id % 40}
+              sharding-column: id
+        protein_feature:
+          actual-data-nodes: ds0.protein_feature_$->{0..39}
+          table-strategy:
+            inline:
+              algorithm-expression: protein_feature_$->{id % 40}
+              sharding-column: id
+        phase_seperation:
+          actual-data-nodes: ds0.phase_seperation_$->{0..39}
+          table-strategy:
+            inline:
+              algorithm-expression: phase_seperation_$->{id % 40}
+              sharding-column: id
+        phase_seperation_pic:
+          actual-data-nodes: ds0.phase_seperation_pic
+          table-strategy:
+            inline:
+              algorithm-expression: phase_seperation_pic
+              sharding-column: id
+        phase_seperation_g:
+          actual-data-nodes: ds0.phase_seperation_g
+          table-strategy:
+            inline:
+              algorithm-expression: phase_seperation_g
+              sharding-column: id
+        amino_acids_usage_g:
+          actual-data-nodes: ds0.amino_acids_usage_g
+          table-strategy:
+            inline:
+              algorithm-expression: amino_acids_usage_g
+              sharding-column: id
+        coding_potential_g:
+          actual-data-nodes: ds0.coding_potential_g
+          table-strategy:
+            inline:
+              algorithm-expression: coding_potential_g
+              sharding-column: id
+        codon_rscu_g:
+          actual-data-nodes: ds0.codon_rscu_g
+          table-strategy:
+            inline:
+              algorithm-expression: codon_rscu_g
+              sharding-column: id
+        codon_usage_g:
+          actual-data-nodes: ds0.codon_usage_g
+          table-strategy:
+            inline:
+              algorithm-expression: codon_usage_g
+              sharding-column: id
+        nucleotide_cop_g:
+          actual-data-nodes: ds0.nucleotide_cop_g
+          table-strategy:
+            inline:
+              algorithm-expression: nucleotide_cop_g
+              sharding-column: id
+        nucleotide_cop_syno_g:
+          actual-data-nodes: ds0.nucleotide_cop_syno_g
+          table-strategy:
+            inline:
+              algorithm-expression: nucleotide_cop_syno_g
+              sharding-column: id
+        protein_feature_g:
+          actual-data-nodes: ds0.protein_feature_g
+          table-strategy:
+            inline:
+              algorithm-expression: protein_feature_g
+              sharding-column: id
+        specise_info:
+          actual-data-nodes: ds0.specise_info
+          table-strategy:
+            inline:
+              algorithm-expression: specise_info
+              sharding-column: id
+        amino_pic:
+          actual-data-nodes: ds0.amino_pic
+          table-strategy:
+            inline:
+              algorithm-expression: amino_pic
+              sharding-column: id
+        coding_pic:
+          actual-data-nodes: ds0.coding_pic
+          table-strategy:
+            inline:
+              algorithm-expression: coding_pic
+              sharding-column: id
+        codon_bias_pic:
+          actual-data-nodes: ds0.codon_bias_pic
+          table-strategy:
+            inline:
+              algorithm-expression: codon_bias_pic
+              sharding-column: id
+        codon_pic:
+          actual-data-nodes: ds0.codon_pic
+          table-strategy:
+            inline:
+              algorithm-expression: codon_pic
+              sharding-column: id
+        nucleotide_pic:
+          actual-data-nodes: ds0.nucleotide_pic
+          table-strategy:
+            inline:
+              algorithm-expression: nucleotide_pic
+              sharding-column: id
+        nucleotide_syno_pic:
+          actual-data-nodes: ds0.nucleotide_syno_pic
+          table-strategy:
+            inline:
+              algorithm-expression: nucleotide_syno_pic
+              sharding-column: id
+        protein_pic:
+          actual-data-nodes: ds0.protein_pic
+          table-strategy:
+            inline:
+              algorithm-expression: protein_pic
+              sharding-column: id
+        statistics_hotmap:
+          actual-data-nodes: ds0.statistics_hotmap
+          table-strategy:
+            inline:
+              algorithm-expression: statistics_hotmap
+              sharding-column: id
+        statistics_gccdcenc:
+          actual-data-nodes: ds0.statistics_gccdcenc
+          table-strategy:
+            inline:
+              algorithm-expression: statistics_gccdcenc
+              sharding-column: id
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

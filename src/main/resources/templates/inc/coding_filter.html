@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<div id="nav">
+    <div class="col-md-3" id="coding_filters">
+        <div class="box box-solid" id="filter">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-filter"></i> Filter</h3>
+                <div class="box-tools">
+                    <button type="button" class="btn " id="reset"><i class="fa fa-trash-o"></i> Clear
+                    </button>
+                </div>
+            </div>
+            <div class="box-body" >
+                <div class="form-group">
+                    <label>Taxonomy:</label>
+                    <select class="form-control select2" id="codpro_gen_tax"  style="width: 100%;" onchange="codingsearch();">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Organism:</label>
+                    <select class="form-control select2" id="codpro_gen_org" style="width: 100%;" onchange="codingsearch();">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Assembly-Accession:</label>
+                    <select class="form-control select2" id="codpro_gen_ass" style="width: 100%;" onchange="codingsearch();">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Gene-Id:</label>
+                    <select class="form-control select2" id="codpro_gen_genid" style="width: 100%;" onchange="codingsearch();">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Protein-Id:</label>
+                    <select class="form-control select2" id="codpro_gen_proid"  style="width: 100%;" onchange="codingsearch();">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>CPC2-Label:</label>
+                    <select class="form-control " id="codpro_gen_cpc2"  style="width: 100%;" onchange="codingsearch();">
+                        <option value="-1"></option>
+                        <option value="Coding">Coding</option>
+                        <option value="Noncoding">Noncoding</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>LGC-Label:</label>
+                    <select class="form-control " id="codpro_gen_lgc" style="width: 100%;" onchange="codingsearch();">
+                        <option value="-1"></option>
+                        <option value="Coding">Coding</option>
+                        <option value="Non-coding">Non-coding</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

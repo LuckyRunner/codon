@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home - CompoDynamics: Database of Genomic Composition Dynamics - National Genomics Data Center</title>
+    <div th:replace="~{inc/header::header}"></div>
+    <link rel="stylesheet" th:href="@{/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap-slider/slider.css}">
+</head>
+
+<body class="hold-transition skin-blue layout-top-nav">
+<div class="wrapper" style="overflow:hidden; height: auto;">
+    <div th:replace="inc/nav::#nav(activeUri='home')"></div>
+    <div class="content" style="background-color: #ecf0f5;">
+        <div class="container-fluid" style="padding-left: 40px; padding-right: 40px">
+            <div class="row">
+                <div class="col-md-12" >
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="box">
+                            <div class="box-body">
+                                <div class="box-body no-padding">
+                                    <p  style="margin-top: 10px;">
+                                        <b>CompoDynamics</b> is a comprehensive database of molecular composition dynamics of genes and genomes and represents 36,000+ latest genomes and over 127.7 million coding sequences. CompoDynamics annotates multiple molecular composition features including nucleotide composition, synonymous codon composition, codon usage, amino acid usage, codon usage bias, coding potential and protein physicochemical properties.
+                                    </p>
+                                </div>
+
+                                <div class="form-group text-muted well well-sm no-shadow">
+                                    <br/>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="glyphicon glyphicon-search"></i>
+                                        </div>
+                                        <select class="form-control select2" id="all_search" style="width: 100%;">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                    <span>Examples:&nbsp</span>
+                                    <span>
+                                    <a href="https://bigd.big.ac.cn/compodynamics/browse?taxonomy_geno=fungi">Fungi</a>;
+                                    <a href="https://bigd.big.ac.cn/compodynamics/browse?organism_geno=Homo%20sapiens" >Homo sapiens</a>;
+                                    <a href="https://bigd.big.ac.cn/compodynamics/browse?gene_id=NC_000001.11" >NC_000001.11</a>;
+                                    <a href="https://bigd.big.ac.cn/compodynamics/browse?protein_name=hypothetical%20protein">hypothetical protein</a>;
+                                    </span>
+                                    <br/> <br/>
+                                </div>
+
+                                <ul class="users-list clearfix">
+                                    <li>
+                                        <a href="/compodynamics/nucleotidecop">
+                                            <img th:src="@{/img/nucleotide composition.png}" alt="User Image"></a>
+                                        <a class="users-list-name" href="/compodynamics/nucleotidecop">Nucleotide composition</a>
+                                    </li>
+                                    <li>
+                                        <a class="users-list-name" href="/compodynamics/synnuccop"> <img th:src="@{/img/synonymous.png}" alt="User Image"></a>
+                                        <a class="users-list-name" href="/compodynamics/synnuccop">Synonymous nucleotide composition</a>
+                                    </li>
+                                    <li>
+                                        <img th:src="@{/img/codon usage.png}" alt="User Image">
+                                        <a class="users-list-name" href="/compodynamics/codonusage">Codon usage</a>
+                                    </li>
+                                    <li>
+                                        <img th:src="@{/img/codon usage bias.png}" alt="User Image">
+                                        <a class="users-list-name" href="/compodynamics/usagebias">Codon usage bias</a>
+                                    </li>
+                                    <li>
+                                        <img th:src="@{/img/amino.png}" alt="User Image">
+                                        <a class="users-list-name" href="/compodynamics/amino">Amino acids usage</a>
+                                    </li>
+                                    <li>
+                                        <img th:src="@{/img/coding potential.png}" alt="User Image">
+                                        <a class="users-list-name" href="/compodynamics/codpot">Coding potential</a>
+                                    </li>
+                                    <li>
+                                        <img th:src="@{/img/protein feature.png}" alt="User Image">
+                                        <a class="users-list-name" href="/compodynamics/proteinfeature">Protein feature</a>
+                                    </li>
+                                    <li>
+                                        <img th:src="@{/img/phase.png}" alt="User Image">
+                                        <a class="users-list-name" href="/compodynamics/phase">Phase separation</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Statistics</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tr>
+                                            <th style="width:50%">Organisms:</th>
+                                            <td>26,540</td>
+                                        </tr>
+                                        <tr>
+                                            <th>CDSs</th>
+                                            <td>127,778,183</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Genomes:</th>
+                                            <td>36,345</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Proteins:</th>
+                                            <td>75,381,484</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>Genes:</th>
+                                            <td>2,009,532</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Features:</th>
+                                            <td>36</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">News</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{inc/footer::#footer}"></div>
+<script th:src="@{/js/myjs/search/all_search.js}"></script>
+</body>
+</html>
+

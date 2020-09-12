@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Browse - CompoDynamics: Database of Genomic Composition Dynamics - National Genomics Data Center</title>
+    <div th:replace="~{inc/header::header}"></div>
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <META HTTP-EQUIV="expires" CONTENT="0">
+    <link rel="stylesheet" th:href="@{/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap-slider/slider.css}">
+
+</head>
+
+<body class="hold-transition skin-blue layout-top-nav">
+
+<div class="wrapper" style="overflow:hidden;height: auto;">
+    <div th:replace="inc/nav::#nav(activeUri='browse')"></div>
+    <div class="content" style="background-color: #ecf0f5;">
+        <div class="container-fluid" style="padding-left: 40px; padding-right: 40px">
+            <div class="row">
+                <div class="col-md-12" >
+                    <br>
+                </div>
+                <div class="col-md-3"  id="hideF" hidden>
+                    <a onclick="showFilter()"  class="btn btn-primary btn-block margin-bottom">Show Filter</a>
+                </div>
+                <div class="col-md-3" id="showF">
+                    <a onclick="hideFilter()" class="btn btn-primary btn-block margin-bottom" >Hide Filter</a>
+                </div>
+                <div class="col-md-9">
+                    <div class="breadcrumb">
+                        <li style="font-size: 15px"><i class="fa fa-th"></i> Browse</li>
+                        <li class="active pull-right">Browse</li>
+                        <li class="pull-right"><a href="/compodynamics/"><i class="fa fa-dashboard"></i> Home</a></li>
+                    </div>
+                </div>
+                <div th:replace="~{inc/browse_filter::#browse_filters}"></div>
+
+                <div class="col-md-9" id="result">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs" id="browseTabs">
+                            <li id="li_geno" class="active "><a aria-controls="species1" href="#species1"  role="tab" data-toggle="tab">Genomes</a></li>
+                            <li id="li_gene" class=""><a  aria-controls="genes1" href="#genes1" role="tab" data-toggle="tab">Genes</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="species1">
+                                <table id="species_table" class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Tax-Id</th>
+                                        <th>Taxonomy</th>
+                                        <th>Organism</th>
+                                        <th>Assembly-Accession</th>
+                                        <th>Bioproject</th>
+                                        <th>Biosample</th>
+                                        <th>Refseq-Category</th>
+                                        <th>Version-Status</th>
+                                        <th>Assembly-Level</th>
+                                        <th>Genetic-Code</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="genes1">
+                                <table id="gene_table" class="table table-bordered table-hover  table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Taxonomy</th>
+                                        <th>Organism</th>
+                                        <th>Assembly-Accession</th>
+                                        <th>Gene-Id</th>
+                                        <th>Gene-Name</th>
+                                        <th>Protein-Id</th>
+                                        <th>Protein-Name</th>
+                                        <th>Low-Quality</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{inc/footer::#footer}"></div>
+
+<script>
+
+    function basicsearch() {
+
+        var taxonomy = $("#browse_tax_gen").val();
+        var organism = $("#browse_org_gen").val();
+        var assemblyAccession = $("#browse_ass_gen").val();
+        var geneId = $("#browse_geni_gen").val();
+        var geneName = $("#browse_genn_gen").val();
+        var proteinId = $("#browse_proi_gen").val();
+        var proteinName = $("#browse_prn_gen").val();
+        var lowQuality = $("#browse_quality_gen").val();
+
+        var param = {
+            "taxonomy": taxonomy,
+            "organism": organism,
+            "assemblyAccession": assemblyAccession,
+            "geneId": geneId,
+            "geneName": geneName,
+            "proteinName": proteinName,
+            "proteinId": proteinId,
+            "lowQuality": lowQuality
+        };
+        _speciesTable.settings()[0].ajax.data = param;
+        _speciesTable.ajax.reload();
+
+        _geneTable.settings()[0].ajax.data = param;
+        _geneTable.ajax.reload();
+    }
+</script>
+<script th:src="@{/js/myjs/control/basiccontrol.js}"></script>
+<script th:src="@{/js/myjs/app/basicapp.js}"></script>
+
+<script th:src="@{/js/myjs/filter/basicfilter.js}"></script>
+<script th:src="@{/js/myjs/search/basicsearch.js}"></script>
+<style type="text/css">
+    #gene_table_paginate .paginate_button:nth-of-type(8){
+        display:none;
+    }
+</style>
+</body>
+</html>
+

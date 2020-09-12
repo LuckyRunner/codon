@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Home - CompoDynamics: Database of Genomic Composition Dynamics - National Genomics Data Center</title>
+    <div th:replace="~{inc/header::header}"></div>
+</head>
+<body class="hold-transition skin-blue layout-top-nav">
+<div class="wrapper" style="overflow:hidden;height: auto;">
+    <div th:replace="inc/nav::#nav(activeUri='help')"></div>
+    <div class="content" style="background-color: #ecf0f5;">
+        <div class="container-fluid" style="padding-left: 40px; padding-right: 40px">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-solid"></div>
+                    <div class="box box-solid">
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <h4 class="post-title"><a href="#index_1_1">I.Introduction</a></h4>
+                            <h5 class="post-title"><a href="#index_1_2">&nbsp;&nbsp;&nbsp;A. What is CompoDynamics?</a></h5><br>
+                            <h4 class="post-title"><a href="#index_2_1">II.Data and methods (link to statistics page)</a></h4>
+                            <h5><a href="#index_2_2">&nbsp;&nbsp;&nbsp;A. Where does the data come from?</a></h5>
+                            <h5><a href="#index_2_3">&nbsp;&nbsp;&nbsp;B. How does CompoDynamics process the data?</a></h5>
+                            <h5><a href="#index_2_4">&nbsp;&nbsp;&nbsp;C. How’s the data organized in CompoDynamics?</a></h5><br>
+                            <h4 class="post-title"><a href="#index_3_1">III.How to use CompoDynamics?</a></h4>
+                            <h5><a href="#index_3_2">&nbsp;&nbsp;&nbsp;A. Browse molecular composition of CDS in CompoDynamics</a></h5>
+                            <h5><a href="#index_3_3">&nbsp;&nbsp;&nbsp;B. Browse molecular composition of organisms in CompoDynamics</a></h5>
+                            <h5><a href="#index_3_4">&nbsp;&nbsp;&nbsp;C. Perform cross-organisms/species study of molecular compositions in CompoDynamics</a></h5><br>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="box box-solid">
+                        <div class="box-header with-border" id="index_1_1">
+                            <h3 class="box-title">I.Introduction</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="box-group" id="index_1">
+                                <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                                <div class="panel box box-primary">
+                                    <div class="box-header with-border" id="index_1_2">
+                                        <h4 class="box-title">
+                                            <a data-toggle="collapse" data-parent="#index_1" href="#method_1_1">
+                                                A. What is CompoDynamics?
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="method_1_1" class="panel-collapse collapse in">
+                                        <div class="box-body">
+                                            The molecular composition and characteristics of coding sequence (CDS) have been shown to affect mRNA stability, translation efficiency, binding capability, structure and function of product. Quantifying molecular compositions for genes is useful for studies in codon optimization, translation, protein structure and function as well as evolution. To integrate such data, we developed CompoDynamics (Database of Molecular Composition Dynamics), a comprehensive database of molecular composition dynamics of genes and genomes. CompoDynamics now represents 36,345 latest reference or complete genomes corresponding to 26,540 organisms, 127,778,183 coding sequences (CDS) of 2,009,532 genes for 75,381,484 proteins collected from RefSeq (see statistics page for more information), and we plan to incorporate more data from GenBank and Ensembl in the future. As for each CDS, we integrate molecular composition features including their nucleotide composition, synonymous codon composition, codon usage, amino acid usage, codon usage bias, coding potential and protein physicochemical properties; For each genome, molecular information including nucleotide composition, codon usage, amino acid usage and codon usage bias is provided in genome scale, which enables cross-species analysis. The detailed molecular composition annotation of CDS/genome and related metadata can be accessed via a user-friendly interface that includes individual report pages for each CDS and genome.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <div class="col-md-12">
+                    <div class="box box-solid">
+                        <div class="box-header with-border" id="index_2_1">
+                            <h3 class="box-title">II.Data and methods (link to statistics page)</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="box-group" id="index_2">
+                                <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                                <div class="panel box box-primary">
+                                    <div class="box-header with-border" id="index_2_2">
+                                        <h4 class="box-title">
+                                            <a data-toggle="collapse" data-parent="#index_2" href="#method_2_1">
+                                                A.Where does the data come from?
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="method_2_1" class="panel-collapse collapse in">
+                                        <div class="box-body">
+                                            We collect data from RefSeq genomes (ftp site:
+                                            <a href="https://ftp.ncbi.nlm.nih.gov/genomes/refseq/" style="color:#007799 " onMouseOver="this.style.color='#003377'" onMouseOut="this.style.color='#007799'">
+                                                https://ftp.ncbi.nlm.nih.gov/genomes/refseq/</a>), and download all the coding sequences (CDS) from reference/representative/complete genomes (see RefSeq introduction file for definitions). In addition, only the latest versions are selected.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel box box-success">
+                                    <div class="box-header with-border" id="index_2_3">
+                                        <h4 class="box-title">
+                                            <a data-toggle="collapse" data-parent="#index_2" href="#method_2_2">
+                                                B.How does CompoDynamics process the data?
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="method_2_2" class="panel-collapse collapse in">
+                                        <div class="box-body">
+                                            <p style="padding-left: 20px">
+                                                We first download “*cds_from_genomic.fna.gz” files from RefSeq, which contain CDS for each genome. Based on these sequences, we then calculate features within 7 classes:</p>
+                                            <div class="box" style="padding-left: 20px">
+                                                <div class="box-body table-responsive no-padding">
+                                                    <table class="table table-bordered table-striped">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Classes</th>
+                                                            <th>Calculations</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>nucleotide composition</td>
+                                                            <td>GC, AG, GC1/2/3, AG1/2/3</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>synonymous codon usage</td>
+                                                            <td>A3s, T3s, C3s, G3s, GC3s</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>codon usage</td>
+                                                            <td>codon number and frequency</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>amino acid usage</td>
+                                                            <td>amino acid number and frequency</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>codon usage bias</td>
+                                                            <td>RSCU, ENC, CDC</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>coding potential</td>
+                                                            <td>coding potential score, predicted coding label, fickett score</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>protein physicochemical properties </td>
+                                                            <td>molecular weight, surface area, residue volume, hydrophobicity, charge, structure</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <p>
+                                                    Among them, RSCU (Relative Synonymous Codon Usage) values, CDC (Codon Deviation Coefficient) values are calculated by CAT (Zhang et al. 2012); ENC values, synonymous codon compositions are calculated by codonw (John Peden); Fickett scores, coding potential score and predicted coding label are calculated by cpc2 (Kang et al. 2017).
+                                                </p>
+                                                <p>
+                                                    After that, some of the features (nucleotide composition, codon/amino acid usage, codon usage bias) are calculated in genome scale. For instance, GC values are averaged by weights of each CDS length to yield genome GC.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel box box-primary">
+                                    <div class="box-header with-border" id="index_2_4">
+                                        <h4 class="box-title">
+                                            <a data-toggle="collapse" data-parent="#index_2" href="#method_2_4">
+                                                C. How's the data organized in CompoDynamics?
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="method_2_4" class="panel-collapse collapse in">
+                                        <div class="box-body">
+                                            <address>
+                                                <img class="img-responsive" th:src="@{/img/statistic/22.jpg}" style=" width:100%;"/>
+                                            </address>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <div class="col-md-12">
+                    <div class="box box-solid">
+                        <div class="box-header with-border" id="index_3_1">
+                            <h3 class="box-title">III.How to use CompoDynamics?</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="box-group"  id="index_4_1">
+                                <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                                <div class="panel box box-primary">
+                                    <div class="box-header with-border" id="index_3_2">
+                                        <h4 class="box-title">
+                                            <a data-toggle="collapse" data-parent="#index_2" href="#method_4_4">
+                                                A. Browse molecular composition of CDS in CompoDynamics
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="method_4_4" class="panel-collapse collapse in">
+                                        <div class="box-body">
+                                            <p>
+                                                Users can browse all CDS in the browse page of genes by searching the gene name and protein ID or name of interest. The basic information of CDS’s location, quality, length, GC, AG, GC1/2/3, AG1/2/3 content will be displayed, and the CDS ID is linked to detailed information page of various molecular compositions of CDS.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel box box-primary">
+                                    <div class="box-header with-border" id="index_3_3">
+                                        <h4 class="box-title">
+                                            <a data-toggle="collapse" data-parent="#index_3" href="#method_4_3">
+                                                B. Browse molecular composition of organisms in CompoDynamics
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="method_4_3" class="panel-collapse collapse in">
+                                        <div class="box-body">
+                                            <p>
+                                                Users can browse all organisms in the browse page of organisms by searching the organism name a of interest. The basic information of organism tax ID, BioProject, BioSample, Refseq category, version status, assembly level and genetic code will be displayed, and the organism ID is linked to detailed information page of various molecular compositions of organism.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel box box-primary">
+                                    <div class="box-header with-border" id="index_3_4">
+                                        <h4 class="box-title">
+                                            <a data-toggle="collapse" data-parent="#index_3" href="#method_4_2">
+                                                C. Perform cross-organisms/species study of molecular compositions in CompoDynamics
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="method_4_2" class="panel-collapse collapse in">
+                                        <div class="box-body">
+                                            <p>
+                                                In the statistics page, users can compare the distribution of GC, Codon usage bias, codon usage and amino acid usage pattern between different organisms. In addition, users can compare the distribution of coding probability, CDS length, GC/AG content, synonymous codon composition, codon usage bias and protein features within species in the statistics page.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <div class="col-md-12"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div th:replace="~{inc/footer::#footer}"></div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<div id="nav">
+    <div class="col-md-3" id="amino_filters">
+
+        <div class="box box-solid" id="filter">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-filter"></i> Filter</h3>
+                <div class="box-tools">
+                    <button type="button" class="btn " id="reset"><i class="fa fa-trash-o"></i> Clear
+                    </button>
+                </div>
+            </div>
+
+            <div class="box-body">
+                <div class="form-group">
+                    <label>Taxonomy:</label>
+                    <select class="form-control select2" id="aminoTax1_select2" style="width: 100%;" onchange="aminoSearch();">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Organism:</label>
+                    <select class="form-control select2" id="aminoOrg1_select2" style="width: 100%;" onchange="aminoSearch();">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Assembly-Accession:</label>
+                    <select class="form-control select2" id="aminoAss1_select2"  style="width: 100%;" onchange="aminoSearch();">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Gene-Id:</label>
+                    <select class="form-control select2" id="aminoGen1_select2"  style="width: 100%;" onchange="aminoSearch();">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Protein-Id:</label>
+                    <select class="form-control select2" id="aminoPro1_select2"  style="width: 100%;" onchange="aminoSearch();">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<div id="footer">
+    <script th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+    <script th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+    <script th:src="@{/bower_components/datatables.net/js/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js}"></script>
+    <script th:src="@{/bower_components/select2/dist/js/select2.full.min.js}"></script>
+    <script th:src="@{/bower_components/jquery-slimscroll/jquery.slimscroll.min.js}"></script>
+    <script th:src="@{/bower_components/fastclick/lib/fastclick.js}"></script>
+    <script th:src="@{/js/adminlte.min.js}"></script>
+    <script th:src="@{/js/headerfooter-full.js}"></script>
+    <script th:src="@{/plugins/bootstrap-slider/bootstrap-slider.js}"></script>
+
+
+    <script>
+        $(function () {
+            /* BOOTSTRAP SLIDER */
+            $('.slider').slider()
+        })
+    </script>
+
+    <script>
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            //当切换tab时，强制重新计算列宽
+            $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
+        } );
+
+        $.fn.dataTable.tables({visible: true, api: true}).columns.adjust();
+        // 监听屏幕大小改变
+        $(window).resize(function () {
+            $.fn.dataTable.tables({visible: true, api: true}).columns.adjust();
+        })
+    </script>
+</div>
+</html>
